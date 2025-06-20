@@ -1,0 +1,266 @@
+github action is a platform to automate developer workflow
+CI/CD tool : setup process
+
+pipeline
+
+docker
+
+
+Tech Stack 
+Frontend: React.js
+
+Backend: Django (Python)
+
+Database: MySQL
+
+CI/CD Tool: Jenkins
+
+Containerization: Docker
+
+Version Control: GitHub or GitLab
+
+Server:   Nginx ,cloud platforms (AWS)
+
+#####   steps of CI/CD PIPELINE
+
+1. Developer Pushes Code to Git (Trigger)
+Developer commits code to GitHub/GitLab/Bitbucket.
+
+CI/CD pipeline is triggered by a webhook(A webhook is a way for one system (like GitHub) to send real-time updates to another system (like Jenkins) when a specific event happens — such as:
+
+Code is pushed
+
+A pull request is opened
+
+A branch is merged
+
+In other words, it’s an automatic notification system.) or by Jenkins polling the repo.
+
+Pipeline can be triggered only on certain branches like main or develop.
+
+📝 You must connect GitHub to Jenkins using a webhook or Jenkins plugin.
+
+
+
+#####
+Workflow: Webhook in CI/CD Pipeline
+👨‍💻 Developer pushes code to a GitHub repository.
+
+🔔 GitHub sends a webhook (HTTP POST request) to a specific Jenkins URL (/github-webhook/).
+
+📥 Jenkins receives the webhook and identifies which job is linked to this repo.
+
+🚀 Jenkins automatically triggers the associated CI/CD pipeline:
+
+Clones the latest code
+
+Runs build & tests
+
+Deploys if successful
+
+
+####Stage 2: Clone and Prepare the Code – Summary
+🧩 What Happens:
+🔗 Jenkins connects to your Git repository
+
+Clones the code from GitHub, GitLab, or Bitbucket
+
+Uses git clone internally
+
+🌿 Checks out the correct branch
+
+Example: main, develop, or a feature branch
+
+Ensures pipeline runs only on intended code
+
+🗂️ Prepares the workspace
+
+Cleans previous build files (optional)
+
+Creates required folders
+
+Loads environment variables and credentials
+
+Prepares for build/test/deploy steps
+
+📁 Result:
+Jenkins now has the fresh, correct version of your code in a clean environment and is ready to move to the next stage: Build or Install dependencies.
+
+#####
+
+Build Stage Summary
+🔹 React Frontend
+Jenkins moves to the frontend folder.
+
+Runs npm install to install dependencies.
+
+Runs npm run build to create a production-ready build/ folder containing static files (HTML, CSS, JS).
+
+🔹 Django Backend
+Jenkins moves to the backend folder.
+
+Runs pip install -r requirements.txt to install Python dependencies.
+
+Optionally runs python manage.py collectstatic to gather static files.
+
+Injects environment variables (like secrets, database URLs) securely through Jenkins.
+
+✅ Outcome:
+React frontend is built and ready to serve static assets.
+
+Django backend dependencies are installed and configured for deployment.
+
+
+
+pipeline {
+    agent any
+
+    environment {
+        // Example: Inject environment variables securely if needed
+        // SECRET_KEY = credentials('django-secret-key')
+    }
+
+    stages {
+        stage('Build Frontend') {
+            steps {
+                dir('frontend') {
+                    echo 'Installing React frontend dependencies...'
+                    sh 'npm install'
+                    echo 'Building React frontend...'
+                    sh 'npm run build'
+                }
+            }
+        }
+
+        stage('Build Backend') {
+            steps {
+                dir('backend') {
+                    echo 'Installing Django backend dependencies...'
+                    sh 'pip install -r requirements.txt'
+                    // Uncomment if you want to collect static files during build
+                    // echo 'Collecting static files...'
+                    // sh 'python manage.py collectstatic --noinput'
+                }
+            }
+        }
+    }
+}
+
+
+
+4. Run Automated Tests (Test Stage)
+Django: Run backend unit tests via python manage.py test.
+
+React: Run frontend tests (if any) via npm test.
+
+Jenkins captures and reports test results.
+
+5. Dockerize the App (Docker Build Stage)
+Docker packages code, dependencies, and OS libraries into container images.
+
+Django Dockerfile installs Python dependencies and runs the app with Gunicorn.
+
+React Dockerfile installs Node dependencies and serves the static build folder.
+
+Use docker-compose to orchestrate multi-container setup (Django backend, React frontend, MySQL database).
+
+Jenkins can run docker-compose up --build -d to start all services.
+
+6. Security Scanning (Optional)
+Run automated security tools like:
+
+bandit for Python vulnerabilities.
+
+npm audit for Node.js package issues.
+
+This can be added as a separate Jenkins stage.
+
+7. Deploy to Production Server
+Option 1: Jenkins SSHs into your server, copies files, and runs docker-compose to update containers.
+
+Option 2: Jenkins builds Docker images, pushes them to Docker Hub, and the server pulls and runs them.
+
+8. Post-Deployment Testing (Optional)
+Run smoke tests or health checks to verify the live app is running fine.
+
+Examples: Ping APIs, check /api/health/, or frontend URL availability.
+
+Example Jenkinsfile Flow (All Stages Combined)
+Clone the code from Git.
+
+Build frontend and backend.
+
+Run backend tests.
+
+Run docker-compose up to build and start containers.
+
+Deploy to the server via SSH or Docker image push.
+
+🧠 Final CI/CD Flow:
+Developer pushes code → Git triggers Jenkins → Clone code → Build React & Django → Run tests → Dockerize app → Deploy to server → Post-deployment tests → Live update
+
+####
+
+Jenkinsfile(example for all stage )
+
+pipeline {
+  agent any
+
+  environment {
+    REACT_PATH = 'frontend'
+    DJANGO_PATH = 'backend'
+  }
+
+  stages {
+    stage('Clone Code') {
+      steps {
+        git 'https://github.com/user/fullstack-app.git'
+      }
+    }
+
+    stage('Build Frontend') {
+      steps {
+        dir(REACT_PATH) {
+          sh 'npm install'
+          sh 'npm run build'
+        }
+      }
+    }
+
+    stage('Build Backend') {
+      steps {
+        dir(DJANGO_PATH) {
+          sh 'pip install -r requirements.txt'
+        }
+      }
+    }
+
+    stage('Test Backend') {
+      steps {
+        dir(DJANGO_PATH) {
+          sh 'python manage.py test'
+        }
+      }
+    }
+
+    stage('Docker Compose Up') {
+      steps {
+        sh 'docker-compose up --build -d'
+      }
+    }
+
+    stage('Deploy to VPS') {
+      steps {
+        sh '''
+          ssh user@your-server-ip <<EOF
+            cd /home/user/app
+            git pull origin main
+            docker-compose up --build -d
+          EOF
+        '''
+      }
+    }
+  }
+}
+
+
