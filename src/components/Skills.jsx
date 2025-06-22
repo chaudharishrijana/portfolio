@@ -14,7 +14,7 @@ const skills = [
   'Numpy',
   'Pandas',
   'Matplotlib',
-  'Jupyter',
+  'OpenCV',
 ];
 
 export default function Skills() {
