@@ -14,10 +14,10 @@ export default function Contact() {
 
     emailjs
       .sendForm(
-        'service_41shd98',
-        'template_lurezxl',
+        'service_41shd98', // Replace with your actual service ID
+        'template_lurezxl', // Replace with your actual template ID
         form.current,
-        'qTOBmly80i8fgp7D8'
+        'qTOBmly80i8fgp7D8' // Replace with your actual user/public key
       )
       .then(
         (result) => {
@@ -27,7 +27,7 @@ export default function Contact() {
         },
         (error) => {
           console.error(error.text);
-          setStatus('');
+          setStatus('Something went wrong. Please try again.');
         }
       );
   };
@@ -46,9 +46,7 @@ export default function Contact() {
               <input type="text" name="name" placeholder="Your Name" required />
               <input type="email" name="email" placeholder="Your Email" required />
               <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
-              <button type="submit" className="btn-primary">
-                Send
-              </button>
+              <button type="submit" className="btn-primary">Send</button>
               {status && <p className="status-message">{status}</p>}
             </form>
           </div>
@@ -56,12 +54,8 @@ export default function Contact() {
           {/* Contact Info */}
           <div className="contact-card">
             <h3>My Contact Information</h3>
-            <p>
-              <strong>Email:</strong> chaudharishrijana76@gmail.com
-            </p>
-            <p>
-              <strong>Phone:</strong> +977 9804525204
-            </p>
+            <p><strong>Email:</strong> chaudharishrijana76@gmail.com</p>
+            <p><strong>Phone:</strong> +977 9804525204</p>
 
             <p>
               <strong>GitHub:</strong>{' '}
@@ -71,9 +65,7 @@ export default function Contact() {
                 rel="noopener noreferrer"
                 className="contact-link"
               >
-                <FaGithub
-                  style={{ verticalAlign: 'middle', marginRight: '6px', color: '#64ffda' }}
-                />
+                <FaGithub style={{ verticalAlign: 'middle', marginRight: '6px', color: '#64ffda' }} />
               </a>
             </p>
 
@@ -85,16 +77,14 @@ export default function Contact() {
                 rel="noopener noreferrer"
                 className="contact-link"
               >
-                <FaLinkedin
-                  style={{ verticalAlign: 'middle', marginRight: '6px', color: '#64ffda' }}
-                />
+                <FaLinkedin style={{ verticalAlign: 'middle', marginRight: '6px', color: '#64ffda' }} />
               </a>
             </p>
 
             <p>
               <strong>View CV:</strong>{' '}
               <a
-                href={`${process.env.PUBLIC_URL}/Shrijana_CV.pdf`}
+                href={`${process.env.PUBLIC_URL}/certificates/shrijana_cv.pdf`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-primary"
@@ -105,12 +95,8 @@ export default function Contact() {
               </a>
             </p>
 
-            <p>
-              <strong>Permanent Address:</strong> Bardiya, Nepal
-            </p>
-            <p>
-              <strong>Temporary Address:</strong> Lalitpur, Nepal
-            </p>
+            <p><strong>Permanent Address:</strong> Bardiya, Nepal</p>
+            <p><strong>Temporary Address:</strong> Lalitpur, Nepal</p>
           </div>
         </div>
       </div>
