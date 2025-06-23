@@ -1,3 +1,4 @@
+// src/components/Contact.jsx
 import React, { useRef, useState } from 'react';
 import '../styles/Contact.css';
 import emailjs from '@emailjs/browser';
@@ -11,22 +12,24 @@ export default function Contact() {
   const sendEmail = (e) => {
     e.preventDefault();
 
-    emailjs.sendForm(
-      'service_41shd98',
-      'template_lurezxl',
-      form.current,
-      'qTOBmly80i8fgp7D8'
-    ).then(
-      (result) => {
-        console.log(result.text);
-        setStatus('Message sent successfully!');
-        form.current.reset();
-      },
-      (error) => {
-        console.error(error.text);
-        setStatus('');
-      }
-    );
+    emailjs
+      .sendForm(
+        'service_41shd98',
+        'template_lurezxl',
+        form.current,
+        'qTOBmly80i8fgp7D8'
+      )
+      .then(
+        (result) => {
+          console.log(result.text);
+          setStatus('Message sent successfully!');
+          form.current.reset();
+        },
+        (error) => {
+          console.error(error.text);
+          setStatus('');
+        }
+      );
   };
 
   return (
@@ -43,7 +46,9 @@ export default function Contact() {
               <input type="text" name="name" placeholder="Your Name" required />
               <input type="email" name="email" placeholder="Your Email" required />
               <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
-              <button type="submit" className="btn-primary">Send</button>
+              <button type="submit" className="btn-primary">
+                Send
+              </button>
               {status && <p className="status-message">{status}</p>}
             </form>
           </div>
@@ -51,8 +56,12 @@ export default function Contact() {
           {/* Contact Info */}
           <div className="contact-card">
             <h3>My Contact Information</h3>
-            <p><strong>Email:</strong> chaudharishrijana76@gmail.com</p>
-            <p><strong>Phone:</strong> +977 9804525204</p>
+            <p>
+              <strong>Email:</strong> chaudharishrijana76@gmail.com
+            </p>
+            <p>
+              <strong>Phone:</strong> +977 9804525204
+            </p>
 
             <p>
               <strong>GitHub:</strong>{' '}
@@ -62,8 +71,9 @@ export default function Contact() {
                 rel="noopener noreferrer"
                 className="contact-link"
               >
-                <FaGithub style={{ verticalAlign: 'middle', marginRight: '6px', color: '#64ffda' }} />
-               
+                <FaGithub
+                  style={{ verticalAlign: 'middle', marginRight: '6px', color: '#64ffda' }}
+                />
               </a>
             </p>
 
@@ -75,26 +85,32 @@ export default function Contact() {
                 rel="noopener noreferrer"
                 className="contact-link"
               >
-                <FaLinkedin style={{ verticalAlign: 'middle', marginRight: '6px', color: '#64ffda' }} />
-               
+                <FaLinkedin
+                  style={{ verticalAlign: 'middle', marginRight: '6px', color: '#64ffda' }}
+                />
               </a>
             </p>
 
             <p>
-              <strong>Download CV:</strong>{' '}
+              <strong>View CV:</strong>{' '}
               <a
-                href="/python_intern.pdf"
-                download="Shrijana_CV.pdf"
+                href={`${process.env.PUBLIC_URL}/Shrijana_CV.pdf`}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="btn-primary"
                 style={{ display: 'inline-flex', alignItems: 'center', marginTop: '1rem', gap: '6px' }}
               >
                 <FiDownload />
-                Download My CV
+                View My CV
               </a>
             </p>
 
-            <p><strong>Permanent Address:</strong> Bardiya, Nepal</p>
-            <p><strong>Temporary Address:</strong> Lalitpur, Nepal</p>
+            <p>
+              <strong>Permanent Address:</strong> Bardiya, Nepal
+            </p>
+            <p>
+              <strong>Temporary Address:</strong> Lalitpur, Nepal
+            </p>
           </div>
         </div>
       </div>

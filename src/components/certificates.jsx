@@ -2,33 +2,34 @@
 import React from 'react';
 import '../styles/Certificates.css';
 import { FiDownload } from 'react-icons/fi';
-import { SiProgramiz } from 'react-icons/si'; // Programiz icon
+import { SiJavascript } from 'react-icons/si'; // Or you can use Programiz icon if you prefer
 
 export default function Certificates() {
+  // Use backticks to evaluate process.env.PUBLIC_URL properly in file paths
   const certificates = [
     {
       title: 'Python Basics Certificate',
-      file: '/certificates/Learn Python Basics.pdf',
+      file: `${process.env.PUBLIC_URL}/certificates/Learn Python Basics.pdf`,
     },
     {
       title: 'Python Intermediate',
-      file: '/certificates/Practice_Python Intermediate.pdf',
+      file: `${process.env.PUBLIC_URL}/certificates/Practice_Python Intermediate.pdf`,
     },
     {
       title: 'CSS',
-      file: '/certificates/Learn CSS.pdf',
+      file: `${process.env.PUBLIC_URL}/certificates/Learn CSS.pdf`,
     },
     {
       title: 'Complexity Calculation',
-      file: '/certificates/Complexity Calculation.pdf',
+      file: `${process.env.PUBLIC_URL}/certificates/Complexity Calculation.pdf`,
     },
     {
       title: 'Recursion with Python',
-      file: '/certificates/Recursion with Python.pdf',
+      file: `${process.env.PUBLIC_URL}/certificates/Recursion with Python.pdf`,
     },
     {
       title: 'SQL',
-      file: '/certificates/Learn SQL Basics.pdf',
+      file: `${process.env.PUBLIC_URL}/certificates/Learn SQL Basics.pdf`,
     },
   ];
 
@@ -51,12 +52,18 @@ export default function Certificates() {
         <div className="certificates-grid">
           {certificates.map((cert, index) => (
             <div className="certificate-card" key={index}>
-              <SiProgramiz className="cert-icon" />
+              <SiJavascript className="cert-icon" />
               <h3>{cert.title}</h3>
               <p className="issuer">Issued by Programiz</p>
-              <a href={cert.file} download className="btn-download">
+              {/* Remove download attribute and open link in new tab for viewing */}
+              <a
+                href={cert.file}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-download"
+              >
                 <FiDownload className="icon" />
-                Download PDF
+                View Certificate
               </a>
             </div>
           ))}
