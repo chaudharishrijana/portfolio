@@ -9,27 +9,27 @@ export default function Certificates() {
   const certificates = [
     {
       title: 'Python Basics Certificate',
-      file: `${process.env.PUBLIC_URL}/certificates/Learn Python Basics.pdf`,
+      file: `/certificates/Learn Python Basics.pdf`,
     },
     {
       title: 'Python Intermediate',
-      file: `${process.env.PUBLIC_URL}/certificates/Practice_Python Intermediate.pdf`,
+      file: `/certificates/Practice_Python Intermediate.pdf`,
     },
     {
       title: 'CSS',
-      file: `${process.env.PUBLIC_URL}/certificates/Learn CSS.pdf`,
+      file: `/certificates/Learn CSS.pdf`,
     },
     {
       title: 'Complexity Calculation',
-      file: `${process.env.PUBLIC_URL}/certificates/Complexity Calculation.pdf`,
+      file: `/certificates/Complexity Calculation.pdf`,
     },
     {
       title: 'Recursion with Python',
-      file: `${process.env.PUBLIC_URL}/certificates/Recursion with Python.pdf`,
+      file: `/certificates/Recursion with Python.pdf`,
     },
     {
       title: 'SQL',
-      file: `${process.env.PUBLIC_URL}/certificates/Learn SQL Basics.pdf`,
+      file: `/certificates/Learn SQL Basics.pdf`,
     },
   ];
 

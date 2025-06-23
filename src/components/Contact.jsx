@@ -84,7 +84,7 @@ export default function Contact() {
             <p>
               <strong>View CV:</strong>{' '}
               <a
-                href={`${process.env.PUBLIC_URL}/certificates/shrijana_cv.pdf`}
+                href={`/python_intern.pdf`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-primary"
