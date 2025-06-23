@@ -1,0 +1,79 @@
+/* src/styles/Certificates.css */
+
+.certificates {
+  padding: 5rem 0;
+  background-color: #0a192f;
+  color: #ccd6f6;
+  text-align: center;
+}
+
+.certificates h2 {
+  font-size: 2.5rem;
+  color: #64ffda;
+  margin-bottom: 1rem;
+}
+
+.certificates p {
+  font-size: 1rem;
+  margin-bottom: 2rem;
+  color: #a8b2d1;
+}
+
+.programiz-link {
+  color: #64ffda;
+  text-decoration: underline;
+}
+
+.certificates-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  padding: 0 1rem;
+}
+
+.certificate-card {
+  background-color: #112240;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease;
+}
+
+.certificate-card:hover {
+  transform: translateY(-5px);
+}
+
+.cert-icon {
+  font-size: 3rem;
+  color: #64ffda;
+  margin-bottom: 0.8rem;
+}
+
+.certificate-card h3 {
+  font-size: 1.3rem;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+}
+
+.issuer {
+  font-size: 0.9rem;
+  color: #a8b2d1;
+  margin-bottom: 1rem;
+}
+
+.btn-download {
+  background-color: #64ffda;
+  color: #0a192f;
+  padding: 0.6rem 1rem;
+  border-radius: 4px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+
+.btn-download:hover {
+  background-color: #52d8c0;
+}
