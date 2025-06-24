@@ -6,32 +6,33 @@ import { SiJavascript } from 'react-icons/si'; // Or you can use Programiz icon 
 
 export default function Certificates() {
   // Use backticks to evaluate process.env.PUBLIC_URL properly in file paths
-  const certificates = [
-    {
-      title: 'Python Basics Certificate',
-      file: `/certificates/Learn Python Basics.pdf`,
-    },
-    {
-      title: 'Python Intermediate',
-      file: `/certificates/Practice_Python Intermediate.pdf`,
-    },
-    {
-      title: 'CSS',
-      file: `/certificates/Learn CSS.pdf`,
-    },
-    {
-      title: 'Complexity Calculation',
-      file: `/certificates/Complexity Calculation.pdf`,
-    },
-    {
-      title: 'Recursion with Python',
-      file: `/certificates/Recursion with Python.pdf`,
-    },
-    {
-      title: 'SQL',
-      file: `/certificates/Learn SQL Basics.pdf`,
-    },
-  ];
+ const certificates = [
+  {
+    title: 'Python Basics Certificate',
+    file: `${import.meta.env.BASE_URL}certificates/Learn Python Basics.pdf`,
+  },
+  {
+    title: 'Python Intermediate',
+    file: `${import.meta.env.BASE_URL}certificates/Practice_Python Intermediate.pdf`,
+  },
+  {
+    title: 'CSS',
+    file: `${import.meta.env.BASE_URL}certificates/Learn CSS.pdf`,
+  },
+  {
+    title: 'Complexity Calculation',
+    file: `${import.meta.env.BASE_URL}certificates/Complexity Calculation.pdf`,
+  },
+  {
+    title: 'Recursion with Python',
+    file: `${import.meta.env.BASE_URL}certificates/Recursion with Python.pdf`,
+  },
+  {
+    title: 'SQL',
+    file: `${import.meta.env.BASE_URL}certificates/Learn SQL Basics.pdf`,
+  },
+];
+
 
   return (
     <section className="certificates" id="certificates">

@@ -14,10 +14,10 @@ export default function Contact() {
 
     emailjs
       .sendForm(
-        'service_41shd98', // Replace with your actual service ID
-        'template_lurezxl', // Replace with your actual template ID
+        'service_41shd98', 
+        'template_lurezxl', 
         form.current,
-        'qTOBmly80i8fgp7D8' // Replace with your actual user/public key
+        'qTOBmly80i8fgp7D8' 
       )
       .then(
         (result) => {
@@ -83,16 +83,17 @@ export default function Contact() {
 
             <p>
               <strong>View CV:</strong>{' '}
-              <a
-                href={`/python_intern.pdf`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-primary"
-                style={{ display: 'inline-flex', alignItems: 'center', marginTop: '1rem', gap: '6px' }}
-              >
-                <FiDownload />
-                View My CV
-              </a>
+                        <a
+            href={`${import.meta.env.BASE_URL}python_intern.pdf`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-primary"
+            style={{ display: 'inline-flex', alignItems: 'center', marginTop: '1rem', gap: '6px' }}
+          >
+            <FiDownload />
+            View My CV
+          </a>
+
             </p>
 
             <p><strong>Permanent Address:</strong> Bardiya, Nepal</p>
