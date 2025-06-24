@@ -2,10 +2,8 @@
 import React from 'react';
 import '../styles/Certificates.css';
 import { FiDownload } from 'react-icons/fi';
-import { SiJavascript } from 'react-icons/si'; // Optional: change icon based on certificate type
 
 export default function Certificates() {
-  // Certificate details with updated filenames (no spaces or underscores)
   const certificates = [
     {
       title: 'Python Basics Certificate',
@@ -52,7 +50,7 @@ export default function Certificates() {
         <div className="certificates-grid">
           {certificates.map((cert, index) => (
             <div className="certificate-card" key={index}>
-              <SiJavascript className="cert-icon" />
+              {/* Removed <SiJavascript /> */}
               <h3>{cert.title}</h3>
               <p className="issuer">Issued by Programiz</p>
               <a
