@@ -2,37 +2,36 @@
 import React from 'react';
 import '../styles/Certificates.css';
 import { FiDownload } from 'react-icons/fi';
-import { SiJavascript } from 'react-icons/si'; // Or you can use Programiz icon if you prefer
+import { SiJavascript } from 'react-icons/si'; // Optional: change icon based on certificate type
 
 export default function Certificates() {
-  // Use backticks to evaluate process.env.PUBLIC_URL properly in file paths
- const certificates = [
-  {
-    title: 'Python Basics Certificate',
-    file: `${import.meta.env.BASE_URL}certificates/Learn Python Basics.pdf`,
-  },
-  {
-    title: 'Python Intermediate',
-    file: `${import.meta.env.BASE_URL}certificates/Practice_Python Intermediate.pdf`,
-  },
-  {
-    title: 'CSS',
-    file: `${import.meta.env.BASE_URL}certificates/Learn CSS.pdf`,
-  },
-  {
-    title: 'Complexity Calculation',
-    file: `${import.meta.env.BASE_URL}certificates/Complexity Calculation.pdf`,
-  },
-  {
-    title: 'Recursion with Python',
-    file: `${import.meta.env.BASE_URL}certificates/Recursion with Python.pdf`,
-  },
-  {
-    title: 'SQL',
-    file: `${import.meta.env.BASE_URL}certificates/Learn SQL Basics.pdf`,
-  },
-];
-
+  // Certificate details with updated filenames (no spaces or underscores)
+  const certificates = [
+    {
+      title: 'Python Basics Certificate',
+      file: `${import.meta.env.BASE_URL}certificates/Learn-Python-Basics.pdf`,
+    },
+    {
+      title: 'Python Intermediate',
+      file: `${import.meta.env.BASE_URL}certificates/Practice-Python-Intermediate.pdf`,
+    },
+    {
+      title: 'CSS',
+      file: `${import.meta.env.BASE_URL}certificates/Learn-CSS.pdf`,
+    },
+    {
+      title: 'Complexity Calculation',
+      file: `${import.meta.env.BASE_URL}certificates/Complexity-Calculation.pdf`,
+    },
+    {
+      title: 'Recursion with Python',
+      file: `${import.meta.env.BASE_URL}certificates/Recursion-with-Python.pdf`,
+    },
+    {
+      title: 'SQL',
+      file: `${import.meta.env.BASE_URL}certificates/Learn-SQL-Basics.pdf`,
+    },
+  ];
 
   return (
     <section className="certificates" id="certificates">
@@ -56,7 +55,6 @@ export default function Certificates() {
               <SiJavascript className="cert-icon" />
               <h3>{cert.title}</h3>
               <p className="issuer">Issued by Programiz</p>
-              {/* Remove download attribute and open link in new tab for viewing */}
               <a
                 href={cert.file}
                 target="_blank"
