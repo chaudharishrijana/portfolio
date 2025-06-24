@@ -84,15 +84,16 @@ export default function Contact() {
             <p>
               <strong>View CV:</strong>{' '}
                         <a
-            href={`${import.meta.env.BASE_URL}python_intern.pdf`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-primary"
-            style={{ display: 'inline-flex', alignItems: 'center', marginTop: '1rem', gap: '6px' }}
-          >
-            <FiDownload />
-            View My CV
-          </a>
+  href={`${import.meta.env.BASE_URL}python_intern.pdf`}
+  target="_blank"
+  rel="noopener noreferrer"
+  className="btn-primary"
+  style={{ display: 'inline-flex', alignItems: 'center', marginTop: '1rem', gap: '6px' }}
+>
+  <FiDownload />
+  View My CV
+</a>
+
 
             </p>
 
