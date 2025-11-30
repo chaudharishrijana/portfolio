@@ -14,6 +14,13 @@ const projects = [
     tech: 'React, CSS, JSX',
     code: 'https://github.com/chaudharishrijana/portfolio'
   },
+
+   {
+    title: 'Portfolio  and Marketing Website for AkashLab',
+    description: 'This portfolio website built with React.js.',
+    tech: 'React, CSS, JSX',
+    code: 'https://github.com/chaudharishrijana/AkashLabs'
+  },
   {
     title: 'Augmented Reality Based Art Gallery Web App',
     description: 'A web application that integrates AR to display art pieces in a virtual gallery. Users can interact with artworks in real time through their devices.',
@@ -21,6 +28,8 @@ const projects = [
     code: 'https://github.com/chaudharishrijana/Art-gallery-' // Replace with your actual GitHub repo link
   }
 ];
+
+
 
 export default function Projects() {
   return (
